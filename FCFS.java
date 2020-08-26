@@ -50,17 +50,25 @@ Priority: 5
 
 */
 
-public class FCFS {
-    //In charge of running full FCS simulation
 
+//In charge of running full FCS simulation
+public class FCFS {
+    //Simulates CPU clock time
     int currentTime = 0;
+    //Stores the Dispatcher Time
     int dispSize = 0;
+    //List of all processes in the input file
     List<Process> allPs = new ArrayList<Process>();
+    //List of all finished processes. (Where there are no more executes to complete)
     List<Process> finPs = new ArrayList<Process>();
+    //List of all processes that are ready of the CPU and have arrived
     List<Process> readyPs = new ArrayList<Process>();
+    //The dispatcher change log. Whenever it swaps something/a process starts.
     String changelog = "";
 
+    //Variable to prevent duplicate arrivals if the time hasn't moved. E.g. if dispSize is 0
     int lastArrivalCheck = -1;
+    //Cpu object
     Cpu cpu = new Cpu();
 
     public FCFS(int dispSize){
